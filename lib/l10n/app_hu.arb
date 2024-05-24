@@ -1,1 +1,6 @@
-{}
+{
+	"@@locale": "hu",
+	"collection": "Gyűjtemény",
+	"create": "Létrehozás",
+	"map": "Térkép"
+}

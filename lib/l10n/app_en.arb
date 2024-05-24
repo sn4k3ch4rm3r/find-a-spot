@@ -1,1 +1,6 @@
-{}
+{
+	"@@locale": "en",
+	"collection": "Collection",
+	"map": "Map",
+	"create": "Create"
+}
