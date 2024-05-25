@@ -79,7 +79,7 @@ class ShellNavigatorPage extends StatelessWidget {
                           ),
                         );
                       } else {
-                        context.push('/create', extra: value);
+                        context.push('/create', extra: value.image);
                       }
                     });
                   },
@@ -97,7 +97,7 @@ class ShellNavigatorPage extends StatelessWidget {
                           ),
                         );
                       } else {
-                        context.push('/create', extra: value);
+                        context.push('/create', extra: value.image);
                       }
                     });
                   },

@@ -34,7 +34,7 @@ GoRouter createRouter() {
       ),
       GoRoute(
         path: '/create',
-        builder: (context, state) => CreatePage(image: state.extra as Image),
+        builder: (context, state) => CreatePage(image: state.extra as ImageProvider<Object>),
       ),
       GoRoute(
         path: '/sign-in',
