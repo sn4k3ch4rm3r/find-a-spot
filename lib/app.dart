@@ -48,7 +48,7 @@ class NatureFinderApp extends StatelessWidget {
             ),
             GoRoute(
               path: '/create',
-              builder: (context, state) => const CreatePage(),
+              builder: (context, state) => CreatePage(image: state.extra as Image),
             ),
             GoRoute(
               path: '/sign-in',

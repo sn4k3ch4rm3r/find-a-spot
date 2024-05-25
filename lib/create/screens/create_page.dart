@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class CreatePage extends StatelessWidget {
-  const CreatePage({super.key});
+  final Image image;
+  const CreatePage({super.key, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +11,9 @@ class CreatePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(L10n.of(context)!.create),
       ),
-      body: const Placeholder(),
+      body: Center(
+        child: image,
+      ),
     );
   }
 }
