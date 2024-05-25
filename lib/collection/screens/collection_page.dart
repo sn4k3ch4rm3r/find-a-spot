@@ -1,7 +1,7 @@
-import 'package:find_a_spot/common/widgets/bottom_navigation.dart';
 import 'package:find_a_spot/collection/widgets/collection_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:go_router/go_router.dart';
 
 class CollectionPage extends StatelessWidget {
   const CollectionPage({super.key});
@@ -15,6 +15,14 @@ class CollectionPage extends StatelessWidget {
             title: Text(L10n.of(context)!.collection),
             pinned: true,
             stretch: false,
+            actions: [
+              IconButton(
+                onPressed: () {
+                  context.push('/profile');
+                },
+                icon: const Icon(Icons.person),
+              ),
+            ],
           )
         ],
         body: const CustomScrollView(
@@ -27,7 +35,6 @@ class CollectionPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavigation(),
     );
   }
 }
