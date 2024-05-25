@@ -1,6 +1,13 @@
 {
 	"@@locale": "en",
 	"collection": "Collection",
+	"create": "Create",
 	"map": "Map",
-	"create": "Create"
+	"caption": "Caption",
+	"locaiton": "Location",
+	"submit": "Submit",
+	"takePhoto": "Take a Picture",
+	"pickPhoto": "Pick from Gallery",
+	"takePhotoFailed": "Failed to take picture.",
+	"pickPhotoFailed": "Failed to pick image."
 }

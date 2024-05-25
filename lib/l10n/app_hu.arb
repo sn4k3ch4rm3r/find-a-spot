@@ -2,5 +2,12 @@
 	"@@locale": "hu",
 	"collection": "Gyűjtemény",
 	"create": "Létrehozás",
-	"map": "Térkép"
+	"map": "Térkép",
+	"caption": "Leírás",
+	"locaiton": "Hely",
+	"submit": "Mentés",
+	"takePhoto": "Fénykép készítése",
+	"pickPhoto": "Kiválasztás a galériából",
+	"takePhotoFailed": "Nem sikerült képet készíteni",
+	"pickPhotoFailed": "Nem sikerült képek kiválasztani"
 }

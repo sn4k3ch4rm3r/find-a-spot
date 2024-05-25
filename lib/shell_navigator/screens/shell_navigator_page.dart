@@ -68,14 +68,14 @@ class ShellNavigatorPage extends StatelessWidget {
               children: <Widget>[
                 ListTile(
                   leading: const Icon(Icons.photo_camera),
-                  title: const Text('Take a Picture'),
+                  title: Text(L10n.of(context)!.takePhoto),
                   onTap: () async {
                     _takePhoto(imagePicker).then((value) {
                       Navigator.of(context).pop();
                       if (value == null) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text("Failed to take picture."),
+                          SnackBar(
+                            content: Text(L10n.of(context)!.takePhotoFailed),
                           ),
                         );
                       } else {
@@ -86,14 +86,14 @@ class ShellNavigatorPage extends StatelessWidget {
                 ),
                 ListTile(
                   leading: const Icon(Icons.photo_library),
-                  title: const Text('Pick from Gallery'),
+                  title: Text(L10n.of(context)!.pickPhoto),
                   onTap: () {
                     _pickImage(imagePicker).then((value) {
                       Navigator.of(context).pop();
                       if (value == null) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text("Failed to pick image."),
+                          SnackBar(
+                            content: Text(L10n.of(context)!.pickPhotoFailed),
                           ),
                         );
                       } else {

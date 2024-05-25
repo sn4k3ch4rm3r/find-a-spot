@@ -39,23 +39,23 @@ class CreatePage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 16.0),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 16.0),
                             child: TextField(
                               textCapitalization: TextCapitalization.sentences,
                               decoration: InputDecoration(
-                                icon: Icon(Icons.description_outlined),
-                                label: Text('Caption'),
-                                border: OutlineInputBorder(),
+                                icon: const Icon(Icons.description_outlined),
+                                label: Text(L10n.of(context)!.caption),
+                                border: const OutlineInputBorder(),
                               ),
                             ),
                           ),
-                          const TextField(
+                          TextField(
                             textCapitalization: TextCapitalization.sentences,
                             decoration: InputDecoration(
-                              icon: Icon(Icons.location_on_outlined),
-                              label: Text('Location'),
-                              border: OutlineInputBorder(),
+                              icon: const Icon(Icons.location_on_outlined),
+                              label: Text(L10n.of(context)!.locaiton),
+                              border: const OutlineInputBorder(),
                             ),
                             textInputAction: TextInputAction.search,
                           ),
@@ -106,8 +106,8 @@ class CreatePage extends StatelessWidget {
                         width: double.infinity,
                         child: FilledButton(
                           onPressed: () {},
-                          child: const Text(
-                            "Submit",
+                          child: Text(
+                            L10n.of(context)!.submit,
                           ),
                         ),
                       ),
