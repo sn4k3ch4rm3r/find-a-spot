@@ -8,7 +8,9 @@ class NominatimService {
   Future<http.Response> _get(String endpoint, Map<String, String> parameters) async {
     parameters["format"] = "jsonv2";
     final uri = Uri.https(_baseUrl, endpoint, parameters);
-    return await http.get(uri);
+    return await http.get(uri, headers: {
+      'User-Agent': 'com.sn4k3ch4rm3r.find_a_spot',
+    });
   }
 
   Future<List<Place>> search(String query) async {

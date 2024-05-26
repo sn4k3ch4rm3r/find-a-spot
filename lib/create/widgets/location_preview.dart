@@ -40,6 +40,11 @@ class LocationPreview extends StatelessWidget {
               ),
             ),
           )
+        ]),
+        const RichAttributionWidget(attributions: [
+          TextSourceAttribution(
+            "OpenStreetMap contributors",
+          )
         ])
       ],
     );
