@@ -1,8 +1,10 @@
+import 'dart:io';
+
 import 'package:find_a_spot/features/features.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 GoRouter createRouter() {
   return GoRouter(
@@ -31,7 +33,7 @@ GoRouter createRouter() {
       ),
       GoRoute(
         path: '/create',
-        builder: (context, state) => CreatePage(image: state.extra as ImageProvider<Object>),
+        builder: (context, state) => const CreatePage(),
       ),
       GoRoute(
         path: '/sign-in',

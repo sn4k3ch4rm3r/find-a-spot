@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:find_a_spot/features/create/models/location.dart';
-import 'package:find_a_spot/features/create/providers/location_provider.dart';
+import 'package:find_a_spot/features/create/providers/creation_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class LocationSearch extends StatefulWidget {
-  final LocationProvider provider;
+  final CreationProvider provider;
   const LocationSearch({super.key, required this.provider});
 
   @override

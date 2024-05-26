@@ -1,10 +1,12 @@
 import 'dart:io';
 
+import 'package:find_a_spot/features/create/create.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:provider/provider.dart';
 
 class ShellNavigatorPage extends StatelessWidget {
   final GoRouterState state;
@@ -79,7 +81,8 @@ class ShellNavigatorPage extends StatelessWidget {
                           ),
                         );
                       } else {
-                        context.push('/create', extra: value.image);
+                        context.read<CreationProvider>().initializeCreation(value);
+                        context.push('/create');
                       }
                     });
                   },
@@ -97,7 +100,8 @@ class ShellNavigatorPage extends StatelessWidget {
                           ),
                         );
                       } else {
-                        context.push('/create', extra: value.image);
+                        context.read<CreationProvider>().initializeCreation(value);
+                        context.push('/create');
                       }
                     });
                   },
@@ -110,23 +114,23 @@ class ShellNavigatorPage extends StatelessWidget {
     );
   }
 
-  Future<Image?> _pickImage(ImagePicker imagePicker) async {
+  Future<File?> _pickImage(ImagePicker imagePicker) async {
     PermissionStatus permission = await Permission.photos.request();
     if (permission.isGranted) {
       final XFile? image = await imagePicker.pickImage(source: ImageSource.gallery);
       if (image != null) {
-        return Image.file(File(image.path));
+        return File(image.path);
       }
     }
     return null;
   }
 
-  Future<Image?> _takePhoto(ImagePicker imagePicker) async {
+  Future<File?> _takePhoto(ImagePicker imagePicker) async {
     PermissionStatus permission = await Permission.camera.request();
     if (permission.isGranted) {
       final XFile? image = await imagePicker.pickImage(source: ImageSource.camera);
       if (image != null) {
-        return Image.file(File(image.path));
+        return File(image.path);
       }
     }
     return null;
