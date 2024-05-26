@@ -1,5 +1,5 @@
-import 'package:find_a_spot/create/models/location.dart';
-import 'package:find_a_spot/create/services/location_service.dart';
+import 'package:find_a_spot/features/create/models/location.dart';
+import 'package:find_a_spot/features/create/services/location_service.dart';
 import 'package:flutter/material.dart';
 
 class LocationProvider with ChangeNotifier {

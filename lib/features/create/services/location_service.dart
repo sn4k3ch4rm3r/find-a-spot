@@ -1,5 +1,5 @@
-import 'package:find_a_spot/create/models/location.dart';
-import 'package:find_a_spot/data/nominatim/nominatim.dart';
+import 'package:find_a_spot/features/create/models/location.dart';
+import 'package:find_a_spot/shared/data/nominatim/nominatim.dart';
 import 'package:latlong2/latlong.dart';
 
 class LocationService {

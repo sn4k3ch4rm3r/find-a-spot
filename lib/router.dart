@@ -1,7 +1,4 @@
-import 'package:find_a_spot/collection/collection.dart';
-import 'package:find_a_spot/create/create.dart';
-import 'package:find_a_spot/map/map.dart';
-import 'package:find_a_spot/shell_navigator/shell_navigator.dart';
+import 'package:find_a_spot/features/features.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
@@ -52,13 +49,18 @@ GoRouter createRouter() {
       ),
       GoRoute(
         path: '/verify-email',
-        builder: (context, state) => EmailVerificationScreen(
-          actions: [
-            EmailVerifiedAction(() {
-              context.go('/');
-            })
-          ],
-        ),
+        builder: (context, state) {
+          return EmailVerificationScreen(
+            actions: [
+              AuthCancelledAction((context) {
+                context.go('/sign-in');
+              }),
+              EmailVerifiedAction(() {
+                context.go('/');
+              })
+            ],
+          );
+        },
       ),
       GoRoute(
         path: '/profile',
