@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:find_a_spot/features/create/create.dart';
+import 'package:find_a_spot/features/shell_navigator/providers/collection_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -16,6 +17,7 @@ class ShellNavigatorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<CollectionProvider>().loadSpots();
     return Scaffold(
       body: child,
       bottomNavigationBar: NavigationBar(

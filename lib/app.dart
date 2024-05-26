@@ -1,4 +1,5 @@
 import 'package:find_a_spot/features/features.dart';
+import 'package:find_a_spot/features/shell_navigator/providers/collection_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:go_router/go_router.dart';
@@ -14,7 +15,8 @@ class NatureFinderApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => CreationProvider())
+        ChangeNotifierProvider(create: (_) => CreationProvider()),
+        ChangeNotifierProvider(create: (_) => CollectionProvider())
       ],
       child: DynamicColorBuilder(builder: (lightColorScheme, darkColorScheme) {
         return MaterialApp.router(

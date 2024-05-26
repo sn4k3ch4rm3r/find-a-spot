@@ -1,13 +1,17 @@
 import 'package:find_a_spot/features/collection/widgets/collection_card.dart';
+import 'package:find_a_spot/features/shell_navigator/models/collection_model.dart';
+import 'package:find_a_spot/features/shell_navigator/providers/collection_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class CollectionPage extends StatelessWidget {
   const CollectionPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    List<CollectionModel> spots = context.watch<CollectionProvider>().spots;
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
@@ -25,13 +29,14 @@ class CollectionPage extends StatelessWidget {
             ],
           )
         ],
-        body: const CustomScrollView(
+        body: CustomScrollView(
           slivers: [
-            SliverToBoxAdapter(child: CollectionCard(imgUrl: 'https://picsum.photos/800')),
-            SliverToBoxAdapter(child: CollectionCard(imgUrl: 'https://picsum.photos/801')),
-            SliverToBoxAdapter(child: CollectionCard(imgUrl: 'https://picsum.photos/802')),
-            SliverToBoxAdapter(child: CollectionCard(imgUrl: 'https://picsum.photos/803')),
-            SliverToBoxAdapter(child: CollectionCard(imgUrl: 'https://picsum.photos/804')),
+            SliverList.builder(
+              itemCount: spots.length,
+              itemBuilder: (context, index) {
+                return CollectionCard(spot: spots[index]);
+              },
+            ),
           ],
         ),
       ),

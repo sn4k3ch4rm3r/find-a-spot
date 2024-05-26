@@ -25,6 +25,7 @@ void main() async {
     await FirebaseAuth.instance.useAuthEmulator(emulatorHost, 9099);
     FirebaseFirestore.instance.useFirestoreEmulator(emulatorHost, 8080);
     await FirebaseStorage.instance.useStorageEmulator(emulatorHost, 9199);
+    FirebaseFirestore.instance.settings = const Settings(persistenceEnabled: false, cacheSizeBytes: null);
   }
 
   FirebaseUIAuth.configureProviders([

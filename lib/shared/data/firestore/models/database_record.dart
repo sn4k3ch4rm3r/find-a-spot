@@ -10,8 +10,9 @@ class DatabaseRecord {
   @LatLngConverter()
   LatLng coordinates;
   String imageUrl;
+  String caption;
 
-  DatabaseRecord({required this.userId, required this.coordinates, required this.imageUrl, this.osmId});
+  DatabaseRecord({required this.userId, required this.coordinates, required this.imageUrl, this.osmId, this.caption = ""});
 
   Map<String, dynamic> toJson() => _$DatabaseRecordToJson(this);
   factory DatabaseRecord.fromJson(Map<String, dynamic> obj) => _$DatabaseRecordFromJson(obj);

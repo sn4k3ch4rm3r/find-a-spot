@@ -7,6 +7,16 @@ class FirestoreRepository {
   FirestoreRepository({required this.service});
 
   Future<void> save(DatabaseRecord data) async {
-    await service.collection('posts').add(data.toJson());
+    await service.collection('spots').add(data.toJson());
+  }
+
+  Future<List<DatabaseRecord>> getSpots() async {
+    QuerySnapshot<Map<String, dynamic>> snapshot = await service.collection('spots').get();
+
+    return snapshot.docs.where((document) {
+      return document.data()['userId'] != null && document.exists;
+    }).map((document) {
+      return DatabaseRecord.fromJson(document.data());
+    }).toList();
   }
 }
