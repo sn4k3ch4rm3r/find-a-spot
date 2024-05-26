@@ -45,7 +45,7 @@ class _LocationSearchState extends State<LocationSearch> {
           return searchResult.map((suggestion) {
             return ListTile(
               title: Text(suggestion.name),
-              subtitle: Text(suggestion.address ?? ""),
+              subtitle: Text(suggestion.address),
               onTap: () {
                 controller.closeView(suggestion.name);
                 widget.provider.location = suggestion;

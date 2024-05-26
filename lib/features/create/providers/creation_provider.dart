@@ -77,6 +77,8 @@ class CreationProvider with ChangeNotifier {
           imageUrl: imageUrl,
           osmId: _location?.osmId,
           caption: _caption,
+          name: _location!.name,
+          address: _location!.address,
         );
         await _firestoreRepository.save(data);
         uploadState = UploadState.done;

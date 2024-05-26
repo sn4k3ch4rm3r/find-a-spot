@@ -13,7 +13,8 @@ class CollectionProvider with ChangeNotifier {
           caption: record.caption,
           coordinates: record.coordinates,
           imageUrl: record.imageUrl,
-          name: "Todo",
+          name: record.name,
+          address: record.address,
         );
       }).toList();
     });

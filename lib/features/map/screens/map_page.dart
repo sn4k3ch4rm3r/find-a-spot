@@ -2,6 +2,7 @@ import 'package:find_a_spot/features/map/widgets/marker_widget.dart';
 import 'package:find_a_spot/features/shell_navigator/models/collection_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:provider/provider.dart';
 
@@ -29,7 +30,12 @@ class MapPage extends StatelessWidget {
             (spot) {
               return Marker(
                 point: spot.coordinates,
-                child: const MarkerWidget(),
+                child: GestureDetector(
+                  onTap: () {
+                    context.push('/details', extra: spot);
+                  },
+                  child: const MarkerWidget(),
+                ),
               );
             },
           ).toList()),

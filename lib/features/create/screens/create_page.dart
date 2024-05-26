@@ -91,6 +91,10 @@ class CreatePage extends StatelessWidget {
                                     content: Text(L10n.of(context)!.uploadSuccessful),
                                   ),
                                 );
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(L10n.of(context)!.uploadFailed)),
+                                );
                               }
                             });
                           },

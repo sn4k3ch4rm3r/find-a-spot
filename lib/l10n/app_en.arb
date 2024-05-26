@@ -10,5 +10,6 @@
 	"pickPhoto": "Pick from Gallery",
 	"takePhotoFailed": "Failed to take picture.",
 	"pickPhotoFailed": "Failed to pick image.",
-	"uploadSuccessful": "Uploaded successfully"
+	"uploadSuccessful": "Uploaded successfully",
+	"uploadFailed": "Upload failed. Try again!"
 }
