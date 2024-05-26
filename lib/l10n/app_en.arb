@@ -9,5 +9,6 @@
 	"takePhoto": "Take a Picture",
 	"pickPhoto": "Pick from Gallery",
 	"takePhotoFailed": "Failed to take picture.",
-	"pickPhotoFailed": "Failed to pick image."
+	"pickPhotoFailed": "Failed to pick image.",
+	"uploadSuccessful": "Uploaded successfully"
 }

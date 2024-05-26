@@ -1,7 +1,13 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:find_a_spot/features/create/models/location.dart';
+import 'package:find_a_spot/features/create/repositories/firebase_storage_repository.dart';
 import 'package:find_a_spot/features/create/repositories/location_repository.dart';
+import 'package:find_a_spot/shared/data/firestore/models/database_record.dart';
+import 'package:find_a_spot/shared/data/firestore/repositories/firestore_repository.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 class CreationProvider with ChangeNotifier {
@@ -12,7 +18,9 @@ class CreationProvider with ChangeNotifier {
 
   UploadState _uploadState = UploadState.none;
 
-  LocationRepository service = LocationRepository();
+  final LocationRepository _locationRepository = LocationRepository();
+  final FirestoreRepository _firestoreRepository = FirestoreRepository(service: FirebaseFirestore.instance);
+  final FirebaseStorageRepository _firebaseStorageRepository = FirebaseStorageRepository(service: FirebaseStorage.instance);
 
   Location? get location => _location;
   set location(Location? value) {
@@ -54,18 +62,33 @@ class CreationProvider with ChangeNotifier {
   }
 
   Future<void> search(String query) async {
-    searchResult = await service.search(query);
+    searchResult = await _locationRepository.search(query);
   }
 
   Future<void> submit() async {
     uploadState = UploadState.uploading;
-    await Future.delayed(const Duration(seconds: 2));
-    uploadState = UploadState.done;
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null && _location != null) {
+      String? imageUrl = await _firebaseStorageRepository.uploadImage(_imageFile);
+      if (imageUrl != null) {
+        DatabaseRecord data = DatabaseRecord(
+          userId: user.uid,
+          coordinates: _location!.coordinates,
+          imageUrl: imageUrl,
+          osmId: _location?.osmId,
+        );
+        await _firestoreRepository.save(data);
+        uploadState = UploadState.done;
+        return;
+      }
+    }
+    uploadState = UploadState.error;
   }
 }
 
 enum UploadState {
   none,
   uploading,
-  done
+  done,
+  error,
 }

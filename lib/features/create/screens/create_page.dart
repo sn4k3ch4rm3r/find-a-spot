@@ -87,8 +87,8 @@ class CreatePage extends StatelessWidget {
                               if (context.read<CreationProvider>().uploadState == UploadState.done) {
                                 Navigator.of(context).pop();
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text("Upload successful"),
+                                  SnackBar(
+                                    content: Text(L10n.of(context)!.uploadSuccessful),
                                   ),
                                 );
                               }
