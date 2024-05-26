@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:find_a_spot/features/create/create.dart';
+import 'package:find_a_spot/features/shell_navigator/models/collection_model.dart';
 import 'package:find_a_spot/features/shell_navigator/providers/collection_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -17,42 +18,45 @@ class ShellNavigatorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<CollectionProvider>().loadSpots();
-    return Scaffold(
-      body: child,
-      bottomNavigationBar: NavigationBar(
-        height: 65,
-        selectedIndex: state.toIndex(),
-        onDestinationSelected: (index) {
-          switch (index) {
-            case 0:
-              context.go('/');
-              break;
-            case 1:
-              _showImageOptions(context);
-              break;
-            case 2:
-              context.go('/map');
-              break;
-          }
-        },
-        destinations: [
-          NavigationDestination(
-            icon: const Icon(Icons.collections_outlined),
-            selectedIcon: const Icon(Icons.collections),
-            label: L10n.of(context)!.collection,
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.add_box_outlined),
-            selectedIcon: const Icon(Icons.add_box),
-            label: L10n.of(context)!.create,
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.map_outlined),
-            selectedIcon: const Icon(Icons.map),
-            label: L10n.of(context)!.map,
-          )
-        ],
+    return StreamProvider<List<CollectionModel>>(
+      create: (context) => context.read<CollectionProvider>().spotStream,
+      initialData: const [],
+      child: Scaffold(
+        body: child,
+        bottomNavigationBar: NavigationBar(
+          height: 65,
+          selectedIndex: state.toIndex(),
+          onDestinationSelected: (index) {
+            switch (index) {
+              case 0:
+                context.go('/');
+                break;
+              case 1:
+                _showImageOptions(context);
+                break;
+              case 2:
+                context.go('/map');
+                break;
+            }
+          },
+          destinations: [
+            NavigationDestination(
+              icon: const Icon(Icons.collections_outlined),
+              selectedIcon: const Icon(Icons.collections),
+              label: L10n.of(context)!.collection,
+            ),
+            NavigationDestination(
+              icon: const Icon(Icons.add_box_outlined),
+              selectedIcon: const Icon(Icons.add_box),
+              label: L10n.of(context)!.create,
+            ),
+            NavigationDestination(
+              icon: const Icon(Icons.map_outlined),
+              selectedIcon: const Icon(Icons.map),
+              label: L10n.of(context)!.map,
+            )
+          ],
+        ),
       ),
     );
   }

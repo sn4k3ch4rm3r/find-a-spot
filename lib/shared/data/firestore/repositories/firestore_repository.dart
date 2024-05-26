@@ -10,13 +10,11 @@ class FirestoreRepository {
     await service.collection('spots').add(data.toJson());
   }
 
-  Future<List<DatabaseRecord>> getSpots() async {
-    QuerySnapshot<Map<String, dynamic>> snapshot = await service.collection('spots').get();
-
-    return snapshot.docs.where((document) {
-      return document.data()['userId'] != null && document.exists;
-    }).map((document) {
-      return DatabaseRecord.fromJson(document.data());
-    }).toList();
+  Stream<List<DatabaseRecord>> getSpotsStream() {
+    return service.collection('spots').snapshots().map((snapshot) {
+      return snapshot.docs.map((document) {
+        return DatabaseRecord.fromJson(document.data());
+      }).toList();
+    });
   }
 }

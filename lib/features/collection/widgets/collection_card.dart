@@ -20,7 +20,7 @@ class CollectionCard extends StatelessWidget {
             children: [
               Image(
                 image: imageProvider,
-                height: 150,
+                height: 250,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),

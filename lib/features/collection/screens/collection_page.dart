@@ -1,6 +1,5 @@
 import 'package:find_a_spot/features/collection/widgets/collection_card.dart';
 import 'package:find_a_spot/features/shell_navigator/models/collection_model.dart';
-import 'package:find_a_spot/features/shell_navigator/providers/collection_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:go_router/go_router.dart';
@@ -11,7 +10,7 @@ class CollectionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<CollectionModel> spots = context.watch<CollectionProvider>().spots;
+    List<CollectionModel> spots = context.watch<List<CollectionModel>>();
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
@@ -33,6 +32,7 @@ class CollectionPage extends StatelessWidget {
           slivers: [
             SliverList.builder(
               itemCount: spots.length,
+              addAutomaticKeepAlives: true,
               itemBuilder: (context, index) {
                 return CollectionCard(spot: spots[index]);
               },
