@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_a_spot/features/shell_navigator/models/collection_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -11,7 +12,7 @@ class DetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NetworkImage imageProvider = NetworkImage(spot.imageUrl);
+    ImageProvider imageProvider = CachedNetworkImageProvider(spot.imageUrl);
     return Scaffold(
       appBar: AppBar(
         title: Text(spot.name),

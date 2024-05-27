@@ -28,6 +28,8 @@ dependencies:
   firebase_storage: ^11.7.6
   uuid: ^4.4.0
   path: ^1.9.0
+  cached_network_image: ^3.3.1
+  flutter_image_compress: ^2.3.0
 
 dev_dependencies:
   flutter_test:

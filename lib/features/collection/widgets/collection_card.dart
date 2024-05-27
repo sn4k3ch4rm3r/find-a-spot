@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:find_a_spot/features/shell_navigator/models/collection_model.dart';
 import 'package:find_a_spot/theme.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ class CollectionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NetworkImage imageProvider = NetworkImage(spot.imageUrl);
+    ImageProvider imageProvider = CachedNetworkImageProvider(spot.imageUrl);
     Future<ColorScheme> colorScheme = ColorScheme.fromImageProvider(provider: imageProvider, brightness: Theme.of(context).brightness);
 
     return FutureBuilder<ColorScheme>(

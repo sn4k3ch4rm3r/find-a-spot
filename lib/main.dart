@@ -19,6 +19,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  FirebaseFirestore.instance.settings = const Settings(persistenceEnabled: true);
 
   if (kDebugMode) {
     String emulatorHost = dotenv.env["FIREBASE_EMULATOR_HOST"] ?? "localhost";
